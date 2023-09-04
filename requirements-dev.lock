@@ -7,3 +7,14 @@
 #   all-features: false
 
 -e file:.
+black==23.7.0
+click==8.1.7
+mypy-extensions==1.0.0
+nodeenv==1.8.0
+packaging==23.1
+pathspec==0.11.2
+platformdirs==3.10.0
+pyright==1.1.325
+ruff==0.0.287
+# The following packages are considered to be unsafe in a requirements file:
+setuptools==68.1.2
