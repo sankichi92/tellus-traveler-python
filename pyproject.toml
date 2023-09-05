@@ -5,7 +5,9 @@ description = "Add your description here"
 authors = [
     { name = "Takahiro Miyoshi", email = "takahiro-miyoshi@sankichi.net" }
 ]
-dependencies = []
+dependencies = [
+    "requests>=2.31.0",
+]
 readme = "README.md"
 requires-python = ">= 3.10"
 
@@ -19,6 +21,9 @@ dev-dependencies = [
     "ruff>=0.0.287",
     "black>=23.7.0",
     "pyright>=1.1.325",
+    "types-requests>=2.31.0.2",
+    "pytest>=7.4.1",
+    "responses>=0.23.3",
 ]
 
 [tool.hatch.metadata]

@@ -1,4 +1,6 @@
 {
   "editor.rulers": [88],
-  "python.analysis.typeCheckingMode": "basic"
+  "python.analysis.enablePytestSupport": true,
+  "python.analysis.typeCheckingMode": "basic",
+  "python.testing.pytestEnabled": true
 }
