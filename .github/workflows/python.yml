@@ -1,0 +1,40 @@
+name: Python
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: "pip"
+          cache-dependency-path: requirements-dev.lock
+
+      - name: Install dependencies
+        run: pip install -r requirements-dev.lock
+
+      - name: Lint with black
+        run: black --check --diff .
+
+      - name: Lint with ruff
+        run: ruff check --format=github .
+
+      - name: Type check with pyright
+        run: pyright
+
+      - name: Test with pytest
+        run: pytest
