@@ -18,23 +18,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v4
+      - uses: eifinger/setup-rye@v1
         with:
-          python-version: ${{ matrix.python-version }}
-          cache: "pip"
-          cache-dependency-path: requirements-dev.lock
+          enable-cache: true
+          cache-prefix: python-${{ matrix.python-version }}
+
+      - name: Pin Python version
+        run: rye pin ${{ matrix.python-version }}
 
       - name: Install dependencies
-        run: pip install -r requirements-dev.lock
+        run: rye sync
 
       - name: Lint with black
-        run: black --check --diff .
+        run: rye run lint:black
 
       - name: Lint with ruff
-        run: ruff check --format=github .
+        run: rye run lint:ruff
 
       - name: Type check with pyright
-        run: pyright
+        run: rye run lint:pyright
 
-      - name: Test with pytest
-        run: pytest
+      - name: Run the tests
+        run: rye run test

@@ -26,5 +26,15 @@ dev-dependencies = [
     "responses>=0.23.3",
 ]
 
+[tool.rye.scripts]
+test = "pytest"
+lint = { chain = ["lint:black", "lint:ruff", "lint:pyright"] }
+"lint:black" = "black --check ."
+"lint:ruff" = "ruff check ."
+"lint:pyright" = "pyright"
+fix = { chain = ["fix:black", "fix:ruff"] }
+"fix:black" = "black ."
+"fix:ruff" = "ruff check . --fix"
+
 [tool.hatch.metadata]
 allow-direct-references = true
