@@ -1,7 +1,7 @@
 [project]
 name = "tellus-traveler"
 version = "0.1.0"
-description = "Add your description here"
+description = "Client for Tellus Traveler API"
 authors = [
     { name = "Takahiro Miyoshi", email = "takahiro-miyoshi@sankichi.net" }
 ]
