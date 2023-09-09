@@ -1,0 +1,64 @@
+site_name: tellus-traveler-python
+site_description: Unofficial Python client for Tellus Traveler API.
+site_author: Takahiro Miyoshi
+
+repo_url: https://github.com/sankichi92/tellus-traveler-python
+repo_name: tellus-traveler-python
+
+watch:
+  - README.md
+  - src
+  - CHANGELOG.md
+
+nav:
+  - README: index.md
+  - API Reference: api.md
+  - changelog.md
+
+theme:
+  name: material
+  palette:
+    # https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/?h=palette#system-preference
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.sections
+    - navigation.footer
+    - toc.integrate
+  icon:
+    repo: fontawesome/brands/github
+
+plugins:
+  - search:
+  - mkdocstrings:
+      handlers:
+        python:
+          import:
+            - https://docs.python.org/3/objects.inv
+          options:
+            show_object_full_path: true
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - pymdownx.magiclink:
+  # https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#configuration
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.snippets:
+  - pymdownx.superfences:

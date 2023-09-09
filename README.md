@@ -24,6 +24,6 @@ This project uses [Rye](https://rye-up.com/) for package management.
 
 ### Publish a new version
 
-1. Bump the version in [pyproject.toml](pyproject.toml) and update [CHANGELOG.md](CHANGELOG.md).
+1. Bump the version in `pyproject.toml` and update `CHANGELOG.md`.
 2. Create a git commit, push it, and ensure that the CI passes.
-3. Create a git tag for the new version and push it, then the [`PyPI / publish` job](.github/workflows/pypi.yml) starts.
+3. Create a git tag for the new version and push it, then the `PyPI / publish` job starts.
