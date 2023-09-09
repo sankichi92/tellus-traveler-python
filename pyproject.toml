@@ -60,4 +60,4 @@ convention = "google"
 "tests/*" = ["D"] # ignore pydocstyle in tests
 
 [tool.pyright]
-typeCheckingMode = "strict"
+strict = ["src"]

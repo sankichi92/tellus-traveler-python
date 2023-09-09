@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+- Add `search()` function.
+- Add `datasets()` and `dataset(id)` functions.
 - Build the documentation pages by `mkdocs`.
 
 ## [0.1.0] - 2023-09-09

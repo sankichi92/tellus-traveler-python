@@ -1,6 +1,7 @@
 """Thin HTTP client for Tellus Traveler API."""
 
 from typing import Any
+from urllib.parse import urljoin
 
 import requests
 
@@ -17,7 +18,7 @@ class HTTPError(IOError):
 
 
 def get(path: str, **params: Any):
-    """Create a GET request to the Tellus Traveler API.
+    """Creates a GET request to Tellus Traveler API.
 
     Args:
         path: Path to the API endpoint.
@@ -30,7 +31,7 @@ def get(path: str, **params: Any):
 
 
 def post(path: str, **json: Any):
-    """Create a POST request to the Tellus Traveler API.
+    """Creates a POST request to Tellus Traveler API.
 
     Args:
         path: Path to the API endpoint.
@@ -43,9 +44,12 @@ def post(path: str, **json: Any):
 
 
 def _request(method: str | bytes, path: str, **kwargs: Any):
+    if path.startswith("/"):
+        path = path[1:]
+
     response = requests.request(
         method,
-        tellus_traveler.base_url + path,
+        urljoin(tellus_traveler.base_url, path),
         headers={"Authorization": f"Bearer {tellus_traveler.api_token}"},
         **kwargs,
     )
@@ -55,9 +59,15 @@ def _request(method: str | bytes, path: str, **kwargs: Any):
 
     try:
         body = response.json()
-        raise HTTPError(
-            f"{response.status_code} {body.get('code')}: {body.get('detail')}",
-            response,
-        )
+        if body.keys() == {"code", "detail"}:
+            raise HTTPError(
+                f"{response.status_code} {body['code']}: {body['detail']}",
+                response,
+            )
+        else:
+            raise HTTPError(
+                f"{response.status_code} {response.reason}: {body}",
+                response,
+            )
     except requests.exceptions.JSONDecodeError:
         raise HTTPError(f"{response.status_code} {response.reason}", response) from None
