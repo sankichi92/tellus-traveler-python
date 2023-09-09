@@ -3,11 +3,9 @@ name = "tellus-traveler"
 version = "0.1.0"
 description = "Client for Tellus Traveler API"
 authors = [
-    { name = "Takahiro Miyoshi", email = "takahiro-miyoshi@sankichi.net" }
+    { name = "Takahiro Miyoshi", email = "takahiro-miyoshi@sankichi.net" },
 ]
-dependencies = [
-    "requests>=2.31.0",
-]
+dependencies = ["requests>=2.31.0"]
 readme = "README.md"
 requires-python = ">= 3.10"
 
@@ -38,3 +36,23 @@ fix = { chain = ["fix:black", "fix:ruff"] }
 
 [tool.hatch.metadata]
 allow-direct-references = true
+
+[tool.ruff]
+extend-select = [
+    "I",  # isort
+    "D",  # pydocstyle
+    "B",  # flake8-bugbear
+    "PT", # flake8-pytest-style
+]
+ignore = [
+    "D417", # https://beta.ruff.rs/docs/settings/#pydocstyle
+]
+
+[tool.ruff.pydocstyle]
+convention = "google"
+
+[tool.ruff.extend-per-file-ignores]
+"tests/*" = ["D"] # ignore pydocstyle in tests
+
+[tool.pyright]
+typeCheckingMode = "strict"

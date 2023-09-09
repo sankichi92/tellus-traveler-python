@@ -1,8 +1,10 @@
+"""Client for Tellus Traveler API."""
+
 __all__ = ["get", "post"]
 
-from .http_client import get, post
-
 import os
+
+from .http_client import get, post
 
 api_token = os.environ.get("TELLUS_API_TOKEN", None)
 
