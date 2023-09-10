@@ -1,7 +1,8 @@
 from datetime import datetime
 from typing import Any
 
-from ..models import SceneSearch
+from .. import http_client
+from ..models import Scene, SceneSearch
 
 
 def search(
@@ -92,3 +93,19 @@ def search(
     params = {k: v for k, v in params.items() if v is not None}
 
     return SceneSearch(params)
+
+
+def scene(dataset_id: str, scene_id: str) -> Scene:
+    """Get a scene info.
+
+    <https://www.tellusxdp.com/docs/travelers/#/シーン/get_datasets__dataset_id__data__data_id__>
+
+    Args:
+        dataset_id: Dataset ID.
+        scene_id: Scene ID.
+
+    Returns:
+        A `Scene` instance.
+    """
+    response = http_client.get(f"/datasets/{dataset_id}/data/{scene_id}/")
+    return Scene(response)

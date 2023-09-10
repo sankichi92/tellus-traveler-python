@@ -3,6 +3,7 @@
 __all__ = [
     "datasets",
     "dataset",
+    "scene",
     "search",
     "get",
     "post",
@@ -10,7 +11,7 @@ __all__ = [
 
 import os
 
-from .api import dataset, datasets, search
+from .api import dataset, datasets, scene, search
 from .http_client import get, post
 
 api_token = os.environ.get("TELLUS_API_TOKEN", None)
