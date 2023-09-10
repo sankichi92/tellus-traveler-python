@@ -1,3 +1,5 @@
+from pathlib import Path
+from threading import Thread
 from typing import Any
 
 from .. import api
@@ -59,6 +61,35 @@ class Scene:
             A list of `File` instances.
         """
         return api.scene_files(self.dataset_id, self.id)
+
+    def download_all_files(self, dir: Path | str | None = None) -> Path:
+        """Download all files concurrently.
+
+        Args:
+            dir: Directory path to save the files. If not given, creates a directory
+                with `tellus:name` in the current directory and saves the files there.
+
+        Returns:
+            A `Path` instance of the directory where the files are saved.
+        """
+        files = self.files()
+
+        if len(files) > len(set(file["name"] for file in files)):
+            raise ValueError("File names are not unique.")
+
+        if dir is None:
+            dir = Path(self["tellus:name"])
+            dir.mkdir(exist_ok=True)
+
+        threads = [Thread(target=file.download, args=(dir,)) for file in files]
+
+        for thread in threads:
+            thread.start()
+
+        for thread in threads:
+            thread.join()
+
+        return Path(dir)
 
     def thumbnails(self) -> list[File]:
         """Get thumbnails belonging to the scene.

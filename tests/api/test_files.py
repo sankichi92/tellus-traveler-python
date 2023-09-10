@@ -15,3 +15,18 @@ def test_scene_files():
 
     # Then
     assert files[0]["id"] == 1
+
+
+@responses.activate
+def test_scene_file_url():
+    # Given
+    responses.post(
+        "https://www.tellusxdp.com/api/traveler/v1/datasets/dataset-1/data/scene-1/files/1/download-url/",
+        json={"download_url": "https://example.com/scene.tif"},
+    )
+
+    # When
+    url = api.scene_file_url("dataset-1", "scene-1", 1)
+
+    # Then
+    assert url == "https://example.com/scene.tif"

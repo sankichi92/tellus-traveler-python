@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Add `File.url()`, `File.download()`, and `Scene.download_all_files()` functions.
+- Add `api.scene_file_url()` and `api.scene_thumbnail_url()` functions
 - Add `api.scene_files()` and `api.scene_thumbnails()` functions.
 - Add `scene()` function.
 - Add "Getting Started" page to documentation.
