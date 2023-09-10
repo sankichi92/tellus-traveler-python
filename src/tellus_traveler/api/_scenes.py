@@ -79,11 +79,16 @@ def search(
     elif isinstance(sort_by, dict):
         sort_by = [sort_by]
 
-    return SceneSearch(
-        datasets=datasets,
-        intersects=intersects,
-        query=query,
-        is_order_required=is_order_required,
-        only_downloadable_file=only_downloadable_file,
-        sort_by=sort_by,
-    )
+    params = {
+        "datasets": datasets,
+        "intersects": intersects,
+        "query": query,
+        "is_order_required": is_order_required,
+        "only_downloadable_file": only_downloadable_file,
+        "sort_by": sort_by,
+    }
+    
+    # `null` is not allowed at `is_order_required` and `only_downloadable_file`.
+    params = {k: v for k, v in params.items() if v is not None}
+
+    return SceneSearch(params)

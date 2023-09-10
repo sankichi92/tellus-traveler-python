@@ -6,10 +6,14 @@ from . import Scene
 
 
 class SceneSearch:
-    """Search query for scenes."""
+    """Search query for scenes.
 
-    def __init__(self, **params: Any):  # noqa: D107
-        self.params = params
+    Attributes:
+        params: Search query parameters.
+    """
+
+    def __init__(self, params: dict[str, Any]):  # noqa: D107
+        self.params: dict[str, Any] = params
 
     def __repr__(self):  # noqa: D105
         return f"<tellus_traveler.SceneSearch params={self.params}>"

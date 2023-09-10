@@ -12,7 +12,7 @@ class TestSceneSearch:
         )
 
         # When
-        search = SceneSearch()
+        search = SceneSearch({})
         total = search.total()
 
         # Then
@@ -42,7 +42,7 @@ class TestSceneSearch:
         )
 
         # When
-        search = SceneSearch()
+        search = SceneSearch({})
         scenes = search.scenes()
 
         # Then
@@ -72,7 +72,7 @@ class TestSceneSearch:
         )
 
         # When
-        search = SceneSearch()
+        search = SceneSearch({})
         pages = search.pages()
 
         # Then
