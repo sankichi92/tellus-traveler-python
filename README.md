@@ -2,13 +2,9 @@
 
 Unofficial Python client for [Tellus Traveler API](https://www.tellusxdp.com/docs/travelers/).
 
-## Installation
-
-    $ pip install tellus-traveler
-
 ## Getting Started
 
-TBD
+https://tellus-traveler.readthedocs.io/
 
 ## Development
 

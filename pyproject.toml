@@ -17,7 +17,6 @@ build-backend = "hatchling.build"
 managed = true
 dev-dependencies = [
     "ruff>=0.0.287",
-    "black>=23.7.0",
     "pyright>=1.1.325",
     "types-requests>=2.31.0.2",
     "pytest>=7.4.1",
@@ -25,6 +24,14 @@ dev-dependencies = [
     "mkdocs>=1.5.2",
     "mkdocstrings[python]>=0.23.0",
     "mkdocs-material>=9.2.8",
+    "ipykernel>=6.25.2",
+    "mkdocs-jupyter>=0.24.2",
+    "python-dotenv>=1.0.0",
+    "geopandas>=0.13.2",
+    "matplotlib>=3.7.2",
+    "folium>=0.14.0",
+    "mapclassify>=2.6.0",
+    "black[jupyter]>=23.9.0",
 ]
 
 [tool.rye.scripts]

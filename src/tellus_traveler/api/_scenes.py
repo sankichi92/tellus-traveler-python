@@ -87,7 +87,7 @@ def search(
         "only_downloadable_file": only_downloadable_file,
         "sort_by": sort_by,
     }
-    
+
     # `null` is not allowed at `is_order_required` and `only_downloadable_file`.
     params = {k: v for k, v in params.items() if v is not None}
 

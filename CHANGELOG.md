@@ -7,13 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Changed
+### Added
 
-- Improve module structure.
+- Add "Getting Started" page to documentation.
 
 ### Fixed
 
 - Fix HTTP status 422 error of `search()`.
+
+### Changed
+
+- Improve the module structure.
 
 ## [0.2.0] - 2023-09-10
 

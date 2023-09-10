@@ -11,8 +11,8 @@ watch:
   - CHANGELOG.md
 
 nav:
-  - README: index.md
-  - API Reference: api.md
+  - index.ipynb
+  - api-reference.md
   - changelog.md
 
 theme:
@@ -51,6 +51,7 @@ plugins:
             - https://docs.python-requests.org/en/latest/objects.inv
           options:
             show_root_heading: true
+  - mkdocs-jupyter:
 
 markdown_extensions:
   - toc:
