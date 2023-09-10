@@ -1,17 +1,12 @@
-"""Scene endpoints.
-
-https://www.tellusxdp.com/docs/travelers/#/シーン
-"""
-
 from datetime import datetime
-from typing import Any, Iterator
+from typing import Any
 
 from ..models import SceneSearch
 
 
 def search(
     datasets: list[str] | None = None,
-    bbox: list[float] | tuple[float, ...] | Iterator[float] | None = None,
+    bbox: list[float] | tuple[float, ...] | None = None,
     intersects: dict[str, Any] | None = None,
     start_datetime: str | datetime | None = None,
     end_datetime: str | datetime | None = None,
@@ -22,7 +17,7 @@ def search(
 ) -> SceneSearch:
     """Search scenes.
 
-    https://www.tellusxdp.com/docs/travelers/#/シーン/post_data_search_
+    <https://www.tellusxdp.com/docs/travelers/#/シーン/post_data_search_>
 
     Args:
         datasets: Dataset IDs.
@@ -38,7 +33,7 @@ def search(
 
     Returns:
         A [SceneSearch][tellus_traveler.models.SceneSearch] instance that
-        represents deferred query.
+            represents deferred query.
     """
     if bbox is not None:
         if intersects is not None:
@@ -85,9 +80,9 @@ def search(
         sort_by = [sort_by]
 
     return SceneSearch(
-        query=query,
         datasets=datasets,
         intersects=intersects,
+        query=query,
         is_order_required=is_order_required,
         only_downloadable_file=only_downloadable_file,
         sort_by=sort_by,

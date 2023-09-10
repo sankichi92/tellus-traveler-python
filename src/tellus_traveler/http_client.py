@@ -9,15 +9,18 @@ import tellus_traveler
 
 
 class HTTPError(IOError):
-    """An HTTP error occurred."""
+    """An HTTP error occurred.
 
-    def __init__(self, message: str, response: requests.Response):
-        """Initialize HTTPError with `response` object."""
-        self.response = response
+    Attributes:
+        response: The response object.
+    """
+
+    def __init__(self, message: str, response: requests.Response):  # noqa: D107
+        self.response: requests.Response = response
         super().__init__(message)
 
 
-def get(path: str, **params: Any):
+def get(path: str, **params: Any) -> Any:
     """Creates a GET request to Tellus Traveler API.
 
     Args:
@@ -30,7 +33,7 @@ def get(path: str, **params: Any):
     return _request("get", path, params=params)
 
 
-def post(path: str, **json: Any):
+def post(path: str, **json: Any) -> Any:
     """Creates a POST request to Tellus Traveler API.
 
     Args:

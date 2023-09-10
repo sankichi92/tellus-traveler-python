@@ -48,8 +48,9 @@ plugins:
         python:
           import:
             - https://docs.python.org/3/objects.inv
+            - https://docs.python-requests.org/en/latest/objects.inv
           options:
-            show_object_full_path: true
+            show_root_heading: true
 
 markdown_extensions:
   - toc:

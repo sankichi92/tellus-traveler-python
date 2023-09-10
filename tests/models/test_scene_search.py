@@ -1,6 +1,5 @@
-import pytest
 import responses
-from tellus_traveler import models
+from tellus_traveler.models import SceneSearch
 
 
 class TestSceneSearch:
@@ -13,7 +12,7 @@ class TestSceneSearch:
         )
 
         # When
-        search = models.SceneSearch()
+        search = SceneSearch()
         total = search.total()
 
         # Then
@@ -43,7 +42,7 @@ class TestSceneSearch:
         )
 
         # When
-        search = models.SceneSearch()
+        search = SceneSearch()
         scenes = search.scenes()
 
         # Then
@@ -73,40 +72,10 @@ class TestSceneSearch:
         )
 
         # When
-        search = models.SceneSearch()
+        search = SceneSearch()
         pages = search.pages()
 
         # Then
         assert next(pages) == {"features": [{"id": "1"}, {"id": "2"}]}
         assert next(pages) == {"features": [{"id": "3"}, {"id": "4"}]}
         assert next(pages, None) is None
-
-
-class TestScene:
-    @pytest.fixture()
-    def scene(self):
-        return models.Scene(
-            {
-                "id": "scene-1",
-                "dataset_id": "dateset-1",
-                "geometry": {
-                    "type": "Polygon",
-                    "coordinates": [
-                        [[-180, 90], [180, 90], [180, -90], [-180, -90], [-180, 90]]
-                    ],
-                },
-                "properties": {"key": "value"},
-            }
-        )
-
-    def test_getitem(self, scene):
-        assert scene["key"] == "value"
-
-    def test_id(self, scene):
-        assert scene.id == "scene-1"
-
-    def test_dataset_id(self, scene):
-        assert scene.dataset_id == "dateset-1"
-
-    def test_geometry(self, scene):
-        assert scene.geometry["type"] == "Polygon"

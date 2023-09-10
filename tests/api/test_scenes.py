@@ -1,9 +1,9 @@
-from tellus_traveler.api import scenes
+from tellus_traveler import api
 
 
 def test_search():
     # When
-    search = scenes.search(
+    search = api.search(
         bbox=[1, 2, 3, 4],
         start_datetime="2023-09-09T00:00:00Z",
         end_datetime="2020-09-10T00:00:00Z",
