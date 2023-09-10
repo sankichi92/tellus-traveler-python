@@ -50,3 +50,35 @@ def test_dataset():
 
     # Then
     assert res == {"id": "1"}
+
+
+@responses.activate
+def test_dataset_terms_url():
+    # Given
+    responses.get(
+        "https://www.tellusxdp.com/api/traveler/v1/datasets/1/terms-of-use/",
+        status=302,
+        headers={"Location": "https://example.com/terms"},
+    )
+
+    # When
+    res = api.dataset_terms_url("1")
+
+    # Then
+    assert res == "https://example.com/terms"
+
+
+@responses.activate
+def test_dataset_manual_url():
+    # Given
+    responses.get(
+        "https://www.tellusxdp.com/api/traveler/v1/datasets/1/manual/",
+        status=302,
+        headers={"Location": "https://example.com/manual"},
+    )
+
+    # When
+    res = api.dataset_manual_url("1")
+
+    # Then
+    assert res == "https://example.com/manual"

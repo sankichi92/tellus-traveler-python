@@ -47,3 +47,31 @@ def dataset(id: str) -> dict[str, Any]:
         A dataset dictionary.
     """
     return http_client.get(f"/datasets/{id}/")
+
+
+def dataset_terms_url(id: str) -> str:
+    """Gets a dataset terms of use URL by ID.
+
+    <https://www.tellusxdp.com/docs/travelers/#/データセットメディア/get_datasets__dataset_id__terms_of_use_>
+
+    Args:
+        id: Dataset ID.
+
+    Returns:
+        A dataset terms of use URL.
+    """
+    return http_client.get(f"/datasets/{id}/terms-of-use/")
+
+
+def dataset_manual_url(id: str) -> str:
+    """Gets a dataset manual URL by ID.
+
+    <https://www.tellusxdp.com/docs/travelers/#/データセットメディア/get_datasets__dataset_id__manual_>
+
+    Args:
+        id: Dataset ID.
+
+    Returns:
+        A dataset manual URL.
+    """
+    return http_client.get(f"/datasets/{id}/manual/")

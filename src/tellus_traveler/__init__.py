@@ -1,8 +1,10 @@
 """Client for Tellus Traveler API."""
 
 __all__ = [
-    "datasets",
     "dataset",
+    "dataset_manual_url",
+    "dataset_terms_url",
+    "datasets",
     "scene",
     "search",
     "get",
@@ -11,7 +13,7 @@ __all__ = [
 
 import os
 
-from .api import dataset, datasets, scene, search
+from .api import dataset, dataset_manual_url, dataset_terms_url, datasets, scene, search
 from .http_client import get, post
 
 api_token = os.environ.get("TELLUS_API_TOKEN", None)

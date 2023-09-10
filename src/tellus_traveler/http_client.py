@@ -54,8 +54,12 @@ def _request(method: str | bytes, path: str, **kwargs: Any):
         method,
         urljoin(tellus_traveler.base_url, path),
         headers={"Authorization": f"Bearer {tellus_traveler.api_token}"},
+        allow_redirects=False,
         **kwargs,
     )
+
+    if response.is_redirect:
+        return response.headers["Location"]
 
     if response.ok:
         return response.json()
