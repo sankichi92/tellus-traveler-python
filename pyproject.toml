@@ -39,6 +39,7 @@ dev-dependencies = [
     "folium>=0.14.0",
     "mapclassify>=2.6.0",
     "black[jupyter]>=23.9.0",
+    "rioxarray>=0.15.0",
 ]
 
 [tool.rye.scripts]
@@ -57,6 +58,7 @@ doc = "mkdocs serve"
 allow-direct-references = true
 
 [tool.ruff]
+extend-include = ["*.ipynb"]
 extend-select = [
     "I",  # isort
     "D",  # pydocstyle
@@ -67,11 +69,16 @@ ignore = [
     "D417", # https://beta.ruff.rs/docs/settings/#pydocstyle
 ]
 
+[tool.ruff.extend-per-file-ignores]
+"*.ipynb" = [
+    "D100", # Missing docstring in public module
+    "E402", # Module level import not at top of file
+    "B018", # Found useless expression. Either assign it to a variable or remove it.
+]
+"tests/*" = ["D"] # ignore pydocstyle in tests
+
 [tool.ruff.pydocstyle]
 convention = "google"
-
-[tool.ruff.extend-per-file-ignores]
-"tests/*" = ["D"] # ignore pydocstyle in tests
 
 [tool.pyright]
 strict = ["src"]
