@@ -59,3 +59,11 @@ class Scene:
             A list of `File` instances.
         """
         return api.scene_files(self.dataset_id, self.id)
+
+    def thumbnails(self) -> list[File]:
+        """Get thumbnails belonging to the scene.
+
+        Returns:
+            A list of `File` instances.
+        """
+        return api.scene_thumbnails(self.dataset_id, self.id)
