@@ -8,6 +8,13 @@ authors = [
 dependencies = ["requests>=2.31.0"]
 readme = "README.md"
 requires-python = ">= 3.10"
+license = "MIT"
+
+[project.urls]
+homepage = "https://github.com/sankichi92/tellus-traveler-python"
+documentation = "https://tellus-traveler.readthedocs.io"
+repository = "https://github.com/sankichi92/tellus-traveler-python.git"
+changelog = "https://github.com/sankichi92/tellus-traveler-python/blob/main/CHANGELOG.md"
 
 [build-system]
 requires = ["hatchling"]
