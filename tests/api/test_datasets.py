@@ -10,7 +10,7 @@ def test_datasets():
     )
 
     # When
-    res = api.datasets()  # type: ignore
+    res = api.datasets()
 
     # Then
     assert res == [0]
@@ -32,7 +32,7 @@ def test_dataset_with_next():
     )
 
     # When
-    res = api.datasets()  # type: ignore
+    res = api.datasets()
 
     # Then
     assert res == [0, 1]

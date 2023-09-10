@@ -1,5 +1,8 @@
 from typing import Any
 
+from .. import api
+from . import File
+
 
 class Scene:
     """Scene model that wraps a GeoJSON Feature.
@@ -48,3 +51,11 @@ class Scene:
     def properties(self) -> dict[str, Any]:
         """Dataset properties."""
         return self.__geo_interface__["properties"]
+
+    def files(self) -> list[File]:
+        """Get files belonging to the scene.
+
+        Returns:
+            A list of `File` instances.
+        """
+        return api.scene_files(self.dataset_id, self.id)
