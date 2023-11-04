@@ -22,7 +22,7 @@ build-backend = "hatchling.build"
 [tool.rye]
 managed = true
 dev-dependencies = [
-    "ruff>=0.0.287",
+    "ruff>=0.1.4",
     "pyright>=1.1.325",
     "types-requests>=2.31.0.2",
     "pytest>=7.4.1",
@@ -37,19 +37,18 @@ dev-dependencies = [
     "matplotlib>=3.7.2",
     "folium>=0.14.0",
     "mapclassify>=2.6.0",
-    "black[jupyter]>=23.9.0",
     "rioxarray>=0.15.0",
 ]
 
 [tool.rye.scripts]
 test = "pytest"
-lint = { chain = ["lint:black", "lint:ruff", "lint:pyright"] }
-"lint:black" = "black --check ."
-"lint:ruff" = "ruff check ."
+lint = { chain = ["lint:ruff:format", "lint:ruff:check", "lint:pyright"] }
+"lint:ruff:format" = "ruff format . --check"
+"lint:ruff:check" = "ruff check ."
 "lint:pyright" = "pyright"
-fix = { chain = ["fix:black", "fix:ruff"] }
-"fix:black" = "black ."
-"fix:ruff" = "ruff check . --fix"
+fix = { chain = ["fix:ruff:format", "fix:ruff:check"] }
+"fix:ruff:format" = "ruff format ."
+"fix:ruff:check" = "ruff check . --fix"
 doc = "mkdocs serve"
 "doc:build" = "mkdocs build"
 

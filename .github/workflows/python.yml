@@ -29,11 +29,11 @@ jobs:
       - name: Install dependencies
         run: rye sync
 
-      - name: Lint with black
-        run: rye run lint:black
+      - name: Lint with ruff format
+        run: rye run lint:ruff:format
 
-      - name: Lint with ruff
-        run: rye run lint:ruff
+      - name: Lint with ruff check
+        run: rye run lint:ruff:check
 
       - name: Type check with pyright
         run: rye run lint:pyright
